@@ -76,7 +76,7 @@ grunt.initConfig({
 		},
 		styles: {
 			files: ["styles/*.scss"],
-	        tasks: ["sass:dev"],
+	        tasks: ["sass:dev", "autoprefixer"],
 	        options: {
 	            spawn: false,
 	        }
