@@ -23,7 +23,6 @@ grunt.initConfig({
 	sass: {
 		dev: {
 			options: {
-	            sourcemap: "none",
 	            style: "expanded"
 	        },
 			files: {
@@ -32,19 +31,12 @@ grunt.initConfig({
 		},
 		prod: {
 			options: {
-	            sourcemap: "auto",
 	            style: "compressed"
 	        },
             files: {
 	            "build/css/main.css": "styles/main.scss"
 	        }
 		}
-    },
-    
-    autoprefixer:{
-        styles: {
-	        src: "build/css/main.css"
-        }
     },
     
     // Concat script files
@@ -76,7 +68,7 @@ grunt.initConfig({
 		},
 		styles: {
 			files: ["styles/*.scss"],
-	        tasks: ["sass:dev", "autoprefixer"],
+	        tasks: ["sass:dev"],
 	        options: {
 	            spawn: false,
 	        }
@@ -94,12 +86,11 @@ grunt.initConfig({
 // Load the tasks.
 grunt.loadNpmTasks("grunt-includes");
 grunt.loadNpmTasks("grunt-contrib-sass");
-grunt.loadNpmTasks("grunt-autoprefixer");
 grunt.loadNpmTasks("grunt-contrib-concat");
 grunt.loadNpmTasks("grunt-contrib-uglify");
 grunt.loadNpmTasks("grunt-contrib-watch");
 
 // Default task(s).
-grunt.registerTask("default", ["includes", "sass:dev", "autoprefixer", "concat", "uglify", "watch"]);
-grunt.registerTask("prod", ["includes", "sass:prod", "autoprefixer", "concat", "uglify"]);
+grunt.registerTask("default", ["includes", "sass:dev", "concat", "uglify", "watch"]);
+grunt.registerTask("prod", ["includes", "sass:prod", "concat", "uglify"]);
 };
